@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TodoItem extends StatefulWidget {
-  const TodoItem({super.key});
-  final String title = "";
+  const TodoItem({super.key, required this.title});
+  final String title;
 
   @override
   State<TodoItem> createState() => _TodoItemState();
