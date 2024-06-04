@@ -12,105 +12,142 @@ class AddNewTaskScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: HexColor(backgrouncolor),
-        body: Column(
-          children: [
-            Container(
-              width: deviceWidth,
-              height: deviceHeight / 10,
-              decoration: const BoxDecoration(
-                color: Colors.purple,
-                image: DecorationImage(
-                  image:
-                      AssetImage("lib/assets/images/add_new_task_header.png"),
-                  fit: BoxFit.cover,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: deviceWidth,
+                height: deviceHeight / 10,
+                decoration: const BoxDecoration(
+                  color: Colors.purple,
+                  image: DecorationImage(
+                    image:
+                        AssetImage("lib/assets/images/add_new_task_header.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.close,
+                          size: 35, color: Colors.white),
+                    ),
+                    const Expanded(
+                      child: Text(
+                        "Add New Task",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 21,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon:
-                        const Icon(Icons.close, size: 35, color: Colors.white),
+              const Text("Task Title"),
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 40,
+                  vertical: 20,
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: "Enter Task Title",
                   ),
-                  const Expanded(
-                    child: Text(
-                      "Add New Task",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 21,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text("Category"),
+                  GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          duration: Duration(seconds: 1),
+                          content: Text("Category Selected"),
+                        ),
+                      );
+                    },
+                    child: Image.asset("lib/assets/images/category_1.png"),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          duration: Duration(seconds: 1),
+                          content: Text("Category Selected"),
+                        ),
+                      );
+                    },
+                    child: Image.asset("lib/assets/images/category_2.png"),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          duration: Duration(seconds: 1),
+                          content: Text("Category Selected"),
+                        ),
+                      );
+                    },
+                    child: Image.asset("lib/assets/images/category_3.png"),
+                  )
+                ],
+              ),
+              const Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text("Date"),
+                        Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 40,
+                            ),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  filled: true, fillColor: Colors.white),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text("Time"),
+                        Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 40,
+                            ),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  filled: true, fillColor: Colors.white),
+                            ))
+                      ],
                     ),
                   ),
                 ],
               ),
-            ),
-            const Text("Task Title"),
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 40,
-                vertical: 20,
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: "Enter Task Title",
+              const Text("Notes"),
+              SizedBox(
+                height: 300,
+                child: TextField(
+                  expands: true,
+                  maxLines: null,
+                  decoration:
+                      InputDecoration(filled: true, fillColor: Colors.white),
                 ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text("Category"),
-                GestureDetector(
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        duration: Duration(seconds: 1),
-                        content: Text("Category Selected"),
-                      ),
-                    );
-                  },
-                  child: Image.asset("lib/assets/images/category_1.png"),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        duration: Duration(seconds: 1),
-                        content: Text("Category Selected"),
-                      ),
-                    );
-                  },
-                  child: Image.asset("lib/assets/images/category_2.png"),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        duration: Duration(seconds: 1),
-                        content: Text("Category Selected"),
-                      ),
-                    );
-                  },
-                  child: Image.asset("lib/assets/images/category_3.png"),
-                )
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [Text("Date"), TextField()],
-                  ),
-                )
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
