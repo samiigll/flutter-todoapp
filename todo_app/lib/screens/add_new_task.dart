@@ -49,12 +49,12 @@ class AddNewTaskScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const Text("Task Title"),
               const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 20,
-                ),
+                padding: EdgeInsets.only(top: 10),
+                child: Text("Task Title"),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40),
                 child: TextField(
                   decoration: InputDecoration(
                     filled: true,
@@ -63,89 +63,99 @@ class AddNewTaskScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text("Category"),
-                  GestureDetector(
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          duration: Duration(seconds: 1),
-                          content: Text("Category Selected"),
-                        ),
-                      );
-                    },
-                    child: Image.asset("lib/assets/images/category_1.png"),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          duration: Duration(seconds: 1),
-                          content: Text("Category Selected"),
-                        ),
-                      );
-                    },
-                    child: Image.asset("lib/assets/images/category_2.png"),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          duration: Duration(seconds: 1),
-                          content: Text("Category Selected"),
-                        ),
-                      );
-                    },
-                    child: Image.asset("lib/assets/images/category_3.png"),
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text("Date"),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 40,
-                            ),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  filled: true, fillColor: Colors.white),
-                            ))
-                      ],
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text("Category"),
+                    GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(seconds: 1),
+                            content: Text("Category Selected"),
+                          ),
+                        );
+                      },
+                      child: Image.asset("lib/assets/images/category_1.png"),
                     ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text("Time"),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 40,
-                            ),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  filled: true, fillColor: Colors.white),
-                            ))
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(seconds: 1),
+                            content: Text("Category Selected"),
+                          ),
+                        );
+                      },
+                      child: Image.asset("lib/assets/images/category_2.png"),
                     ),
-                  ),
-                ],
-              ),
-              const Text("Notes"),
-              SizedBox(
-                height: 300,
-                child: TextField(
-                  expands: true,
-                  maxLines: null,
-                  decoration:
-                      InputDecoration(filled: true, fillColor: Colors.white),
+                    GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(seconds: 1),
+                            content: Text("Category Selected"),
+                          ),
+                        );
+                      },
+                      child: Image.asset("lib/assets/images/category_3.png"),
+                    ),
+                  ],
                 ),
-              )
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text("Date"),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text("Time"),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Text("Notes"),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: SizedBox(
+                  height: 300,
+                  child: TextField(
+                    expands: true,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Save Task"),
+                ),
+              ),
             ],
           ),
         ),
