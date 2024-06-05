@@ -16,6 +16,7 @@ class _TodoItemState extends State<TodoItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: widget.task.isCompleted ? Colors.grey : Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -26,28 +27,38 @@ class _TodoItemState extends State<TodoItem> {
           children: [
             widget.task.type == Tasktype.note
                 ? Image.asset("lib/assets/images/category_1.png")
-                : Image.asset("lib/assets/images/category_2.png"),
-            Column(
-              children: [
-                Text(
-                  widget.task.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21,
+                : widget.task.type == Tasktype.contest
+                    ? Image.asset("lib/assets/images/category_3.png")
+                    : Image.asset("lib/assets/images/category_2.png"),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    widget.task.title,
+                    style: TextStyle(
+                      decoration: widget.task.isCompleted
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 21,
+                    ),
                   ),
-                ),
-                Text(
-                  widget.task.description,
-                  style: const TextStyle(
-                    fontSize: 15,
+                  Text(
+                    widget.task.description,
+                    style: TextStyle(
+                      decoration: widget.task.isCompleted
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Checkbox(
                 value: isChecked,
                 onChanged: (val) => {
                       setState(() {
+                        widget.task.isCompleted = !widget.task.isCompleted;
                         isChecked = val!;
                       })
                     })

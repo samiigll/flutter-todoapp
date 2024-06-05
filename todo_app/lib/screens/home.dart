@@ -30,16 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
         isCompleted: false),
     Task(
         type: Tasktype.contest,
-        title: "Cook Dinner",
-        description: "Cook dinner for family",
+        title: "Run 5K",
+        description: "Run 5 kilometers",
         isCompleted: false),
   ];
 
   List<Task> completed = [
     Task(
-        type: Tasktype.note,
-        title: "Game Time",
-        description: "Play PUBG",
+        type: Tasktype.calendar,
+        title: "Go to party",
+        description: "Enjoy with friends",
         isCompleted: true),
     Task(
         type: Tasktype.calendar,

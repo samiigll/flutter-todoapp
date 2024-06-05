@@ -9,5 +9,5 @@ class Task {
   final Tasktype type;
   final String title;
   final String description;
-  final bool isCompleted;
+  bool isCompleted;
 }
