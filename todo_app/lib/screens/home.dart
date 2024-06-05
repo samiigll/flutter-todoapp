@@ -3,6 +3,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:todo_app/constants/color.dart';
 import 'package:todo_app/screens/add_new_task.dart';
 import 'package:todo_app/todoitem.dart';
+import 'package:todo_app/model/task.dart';
+import 'package:todo_app/constants/tasktype.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,8 +14,39 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> todo = ["Study Lessons", "Workout", "Cook Dinner"];
-  List<String> completed = ["Game Time", "Watch Movie"];
+  // List<String> todo = ["Study Lessons", "Workout", "Cook Dinner"];
+  // List<String> completed = ["Game Time", "Watch Movie"];
+
+  List<Task> todo = [
+    Task(
+        type: Tasktype.note,
+        title: "Study Lessons",
+        description: "Study COMP117",
+        isCompleted: false),
+    Task(
+        type: Tasktype.calendar,
+        title: "Go to gym",
+        description: "Workout for 1 hour",
+        isCompleted: false),
+    Task(
+        type: Tasktype.contest,
+        title: "Cook Dinner",
+        description: "Cook dinner for family",
+        isCompleted: false),
+  ];
+
+  List<Task> completed = [
+    Task(
+        type: Tasktype.note,
+        title: "Game Time",
+        description: "Play PUBG",
+        isCompleted: true),
+    Task(
+        type: Tasktype.calendar,
+        title: "Watch Movie",
+        description: "Watch Avengers",
+        isCompleted: true),
+  ];
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -69,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       itemCount: todo.length,
                       itemBuilder: (context, index) {
-                        return TodoItem(title: todo[index]);
+                        return TodoItem(task: todo[index]);
                       },
                     ),
                   ),
@@ -96,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       itemCount: completed.length,
                       itemBuilder: (context, index) {
-                        return TodoItem(title: completed[index]);
+                        return TodoItem(task: completed[index]);
                       },
                     ),
                   ),
