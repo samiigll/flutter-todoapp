@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Task(
         type: Tasktype.note,
         title: "Study Lessons",
-        description: "Study COMP117",
+        description: "Study COMP-117 lessons",
         isCompleted: false),
     Task(
         type: Tasktype.calendar,
@@ -35,18 +35,25 @@ class _HomeScreenState extends State<HomeScreen> {
         isCompleted: false),
   ];
 
+  void addNewTask(Task newTask) {
+    setState(() {
+      todo.add(newTask);
+    });
+  }
+
   List<Task> completed = [
     Task(
-        type: Tasktype.calendar,
-        title: "Go to party",
-        description: "Enjoy with friends",
+        type: Tasktype.note,
+        title: "Game Time",
+        description: "Play games for 2 hours",
         isCompleted: true),
     Task(
         type: Tasktype.calendar,
         title: "Watch Movie",
-        description: "Watch Avengers",
+        description: "Watch a movie with friends",
         isCompleted: true),
   ];
+
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -138,7 +145,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const AddNewTaskScreen()));
+                      builder: (context) => AddNewTaskScreen(
+                          addNewTask: (newTask) => addNewTask(newTask))));
                 },
                 child: const Text("Add New Task"),
               )
